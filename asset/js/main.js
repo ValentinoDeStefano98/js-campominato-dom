@@ -79,15 +79,16 @@ playButton.addEventListener("click",
                     }
                     if (sediciBombe.includes(parseInt(this.innerText))) {
                         this.classList.add('bomba');
+                        clicks++;
                         stop = true;
                         
                         boxSquare.removeEventListener("click", click);
-                        document.getElementById("message").innerHTML = `Purtroppo hai perso!&#128163; Ricarica la pagina per giocare😊`
+                        document.getElementById("message").innerHTML = `Hai totalizzato ${clicks} punti, ma purtroppo hai perso!&#128163; Ricarica la pagina per giocare😊`
                     } else {
                         this.classList.add("currentElement");
                         clicks++;
-                        if (clicks > 4){
-                            document.getElementById("message").innerHTML = `Complimenti, hai vinto! Ricarica la pagina per giocare😊`
+                        if (clicks > 19){
+                            document.getElementById("message").innerHTML = `Complimenti, hai vinto con un totale di ${clicks} punti! Ricarica la pagina per giocare😊`
                             stop = true;
                             boxSquare.removeEventListener("click", click);
                         }
