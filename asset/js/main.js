@@ -16,7 +16,9 @@ let array = [];
 let arrayBombe = [];
 //Array delle 16 bombe da inserire
 let sediciBombe = [];
+//Numero di click del giocatore
 let clicks = 0;
+//Variabile booleana per fermare il gioco
 let stop = false;
 
 //Creo un evento al click del bottone Play
@@ -77,11 +79,15 @@ playButton.addEventListener("click",
                     if (stop){
                         return;
                     }
+                    //Controllo se il numero corrisponde ad una bomba
                     if (sediciBombe.includes(parseInt(this.innerText))) {
                         this.classList.add('bomba');
+                        //Aggiungo 1 ai click
                         clicks++;
+                        //Il gioco si ferma
                         stop = true;
-                        
+                        show();
+                        //Non si può più cliccare
                         boxSquare.removeEventListener("click", click);
                         document.getElementById("message").innerHTML = `Hai totalizzato ${clicks} punti, ma purtroppo hai perso!&#128163; Ricarica la pagina per giocare😊`
                     } else {
@@ -106,6 +112,17 @@ function getRandomInt(a, b) {
     return Math.floor(Math.random() * (a - b) + b);
 }
 
+//Funzione per rimuovere il click
 function click() {
     this.removeEventListener("click", click);
+}
+//Funzione per mostrare le bombe (non funziona)
+function show(){
+    for (i = 0; i < divNumbers.length; i++){
+        for (j = 0; j < sediciBombe.length; j++){
+            if (i + 1 === sediciBombe[j]){
+                squareContainer[i].classList.add("bomba");
+            }
+        }
+    }
 }
