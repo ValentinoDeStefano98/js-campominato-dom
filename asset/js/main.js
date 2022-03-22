@@ -12,6 +12,10 @@ let difficult = document.getElementById("difficult");
 let divNumbers = 0;
 //Array dei numeri
 let array = [];
+//Array delle 100 bombe
+let arrayBombe = [];
+//Array delle 16 bombe da inserire
+let sediciBombe = [];
 
 //Creo un evento al click del bottone Play
 playButton.addEventListener("click",
@@ -42,6 +46,17 @@ playButton.addEventListener("click",
         }
         //Mescolo l'array
         array = shuffle(array);
+        //Creazione array bombe
+        for ( k = 0; k < divNumbers; k++){
+            arrayBombe.push(k);
+        }
+        //Mescolo gli elementi bombe
+        arrayBombe = shuffle(arrayBombe);
+        //Inserisco 16 elementi random in un nuovo array
+        for ( bombe = 0; bombe < 16; bombe++){
+            sediciBombe.push(arrayBombe[bombe]);
+        }
+        console.log(sediciBombe);
         //Parte il ciclo per creare gli elementi in base al livello scelto (divNumbers)
         for (i = 0; i < divNumbers; i++){
             //Creo i contenitori per ogni elemento
@@ -57,11 +72,23 @@ playButton.addEventListener("click",
             //Aggiungo un ulteriore evento al click dell'elemento
             boxSquare.addEventListener("click",
                 function(){
+                    //Verifico se l'elemento cliccato fa parte anche dell'array bombe
+                    if (sediciBombe.includes(parseInt(this.innerText))){
+                        //Se fa parte si colora di rosso
+                        this.classList.add("bomba");
+                    } else {
+                        //Se non è una bomba si colora di blu
+                        this.classList.add("currentElement");  
+                    }
+
+
                     //Aggiungo una classe al click dell'elemento con this
-                    this.classList.add("currentElement");   
+                    
+                    
                 }
             );
         }
+        
     }
 );
 

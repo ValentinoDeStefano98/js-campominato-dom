@@ -74,6 +74,10 @@ main{
     background-color: var(--currentElement);
 }
 
+.bomba{
+    background-color: red;
+}
+
 /* FOOTER */
 footer{
     width: 80%;
