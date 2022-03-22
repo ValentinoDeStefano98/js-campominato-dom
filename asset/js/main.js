@@ -82,8 +82,6 @@ playButton.addEventListener("click",
                     //Controllo se il numero corrisponde ad una bomba
                     if (sediciBombe.includes(parseInt(this.innerText))) {
                         this.classList.add('bomba');
-                        //Aggiungo 1 ai click
-                        clicks++;
                         //Il gioco si ferma
                         stop = true;
                         show();
